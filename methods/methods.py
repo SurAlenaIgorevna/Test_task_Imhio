@@ -14,8 +14,6 @@ class Methods():
 
     def fill_textarea(self, feedback):
         driver = self.app.driver
-        global textarea
-        textarea = driver.find_elements_by_class_name('NPS__feedback-textarea-container')
-        assert len(textarea) == 1, 'Нет поля для комментария при оценке ниже 7!'
+        assert len(driver.find_elements_by_class_name('NPS__feedback-textarea-container')) == 1, 'Нет поля для комментария при оценке ниже 7!'
         driver.find_element_by_class_name('NPS__feedback-textarea').send_keys(feedback)
         driver.find_element_by_class_name('NPS__feedback-send').click()
